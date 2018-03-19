@@ -1,10 +1,10 @@
 const mysql = require('mysql2/promise');
 
 const config = {
-    host:'mariadb',
-    user: 'root',
-    password: 'password',
-    database: 'Chinook'
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DB
 }
 
 exports.getAll = async function () {
