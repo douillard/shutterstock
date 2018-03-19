@@ -1,0 +1,41 @@
+---
+#extends:
+  # overwrite any rules that may conflict with prettier
+
+parser: 'babel-eslint'
+
+env:
+  node: true
+  mocha: true
+  es6: true
+
+overrides:
+  files: ["*.js"]
+  excludedFiles: "tests/*"
+
+rules:
+
+  no-useless-constructor: 0 # revisit
+  no-duplicate-imports: 2 # doesn't support flow imports.
+  no-console: 0
+
+  func-style: 0
+
+  arrow-parens: 0 # revisit
+    #- 2
+    #- 'as-needed'
+
+  consistent-return: 0
+
+  prefer-arrow-callback:
+    - 0
+    - allowNamedFunctions: false
+      allowUnboundThis: false
+
+  no-unused-vars:
+    - 0
+    - ignoreRestSiblings: true
+
+  spaced-comment: 0
+
+  class-methods-use-this: 0 # revisit

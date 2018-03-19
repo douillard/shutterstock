@@ -1,0 +1,38 @@
+# 1. Update config values (localhost --> mariadb and localhost --> redis) in config.development.json
+# 2. Set APP_ENV environment variable to proper value in Dockerfile-redis (default is "development")
+#    export APP_ENV=development
+#    export DOCKER_ACCT=shutterDocker
+# 3. Run docker-compose build
+# 4. Run docker-compose up
+
+version: "3.2"
+
+services:
+    
+    nodejs:
+      container_name: shutter-nodejs
+      image: douillard/nodejs
+      ports:
+      - "80:3000"
+      volumes:
+        - .:/var/www/shutter
+      working_dir: /var/www/shutter
+      env_file:
+        - ./.env
+      networks:
+        - shutter-network
+
+    mariadb:
+      container_name: mariadb
+      image: douillard/chinook
+      ports:
+      - "3306:3306"
+      env_file:
+        - ./.env
+      networks:
+        - shutter-network
+    
+
+networks:
+    shutter-network:
+      driver: bridge
