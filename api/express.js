@@ -21,14 +21,6 @@ module.exports = function(app) {
     // Compression middleware (should be placed before express.static)
     app.use(compression({ threshold: 512 }));
 
-    /*
-    app.use(cors({
-        origin: ['http://localhost:8080', 'https://reboil-demo.herokuapp.com'],
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-        credentials: true
-    }));
-    */
-
     app.use(bodyParser.json());
 
     app.use(bodyParser.urlencoded({ extended: true }));
